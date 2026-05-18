@@ -68,7 +68,12 @@
         state: installed
 
     - name: Load schema to database # Load the database schema from the specified SQL file to set up the database for the application
-      ansible.builtin.command: "mysql -h mysql.erothi.online -u root -pExpenseApp@1 < /app/schema/backend.sql"
+      community.mysql.mysql_db:
+        state: import
+        name: all
+        target: /app/schema/backend.sql
+        login_user: root
+        login_password: ExpenseApp@1
 
     - name: restart the application service # Restart the application service to apply any changes and ensure it is running with the latest configuration
       ansible.builtin.service:
