@@ -26,7 +26,7 @@
     - name: Download the application code using link # Download the application code from the specified URL and save it to the /app directory
       ansible.builtin.get_url:
         url: https://expense-builds.s3.us-east-1.amazonaws.com/expense-backend-v2.zip
-        dest: /app
+        dest: /tmp/backend.zip
     
     - name: Unzip the application code # Unzip the downloaded application code in the /app directory
       ansible.builtin.unarchive:
