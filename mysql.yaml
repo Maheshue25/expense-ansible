@@ -1,6 +1,5 @@
 - name: Install My SQL server and run it
   hosts: mysql
-
   become: yes
   vars:
     mysql_root_password: "ExpenseApp@1" # Set a strong root password for MySQL
