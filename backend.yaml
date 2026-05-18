@@ -44,10 +44,6 @@
         src: backend.service
         dest: /etc/systemd/system/backend.service
 
-    - name: daemon reload # Reload the systemd daemon to recognize the new service file
-      ansible.builtin.systemd:
-        daemon_reload: yes
-
     - name: start and enable the application service # Start and enable the application service to ensure it runs on boot
       ansible.builtin.service:
         name: backend
@@ -71,9 +67,13 @@
       community.mysql.mysql_db:
         state: import
         name: all
-        target: /app/schema/backend.sql
         login_user: root
         login_password: ExpenseApp@1
+        target: /app/schema/backend.sql
+
+    - name: daemon reload # Reload the systemd daemon to recognize the new service file
+      ansible.builtin.systemd:
+        daemon_reload: yes
 
     - name: restart the application service # Restart the application service to apply any changes and ensure it is running with the latest configuration
       ansible.builtin.service:
