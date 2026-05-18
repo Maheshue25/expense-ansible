@@ -5,7 +5,7 @@
     mysql_root_password: "ExpenseApp@1" # Set a strong root password for MySQL
   tasks:
     - name: Install mysql libraries # Install the necessary MySQL client libraries for Python
-      ansible.builtin.package:
+      ansible.builtin.pip:
         name: "{{ item }}"
         executable: pip3.9 # Use pip3.9 to ensure compatibility with Python 3.9
       loop:
