@@ -18,6 +18,11 @@
         path: /usr/share/nginx/html/
         state: absent
 
+    - name: again create the html directory # Recreate the html directory after removing the default configuration to ensure it is available for the frontend code
+      ansible.builtin.file:
+        path: /usr/share/nginx/html
+        state: directory
+
     - name: Download the frontend code using link # Download the frontend code from the specified URL and save it to the /usr/share/nginx/html directory
       ansible.builtin.get_url:
         url: https://expense-builds.s3.us-east-1.amazonaws.com/expense-frontend-v2.zip
