@@ -26,7 +26,7 @@
     - name: Download the frontend code using link # Download the frontend code from the specified URL and save it to the /usr/share/nginx/html directory
       ansible.builtin.get_url:
         url: https://expense-builds.s3.us-east-1.amazonaws.com/expense-frontend-v2.zip
-        dest: /usr/share/nginx/html/
+        dest: /tmp/frontend.zip
 
     - name: Unzip the frontend code # Unzip the downloaded frontend code in the /usr/share/nginx/html directory
       ansible.builtin.unarchive:
